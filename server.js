@@ -6,15 +6,16 @@ const app = express()
 
 app.use(morgan('dev'))
 
-app.get('/playstore', (req,res) => {
-    const genre = req.query.genre;
+app.get('/apps', (req,res) => {
+    const genre = req.query.genres;
 
     let playStoreCopy = [...playstore]
     
-    // playStoreCopy = playStoreCopy.filter(game => game.genres.toLowerCase().includes(genre.toLowerCase()))
+    
+    playStoreCopy = playStoreCopy.filter(game => game.Genres.toLowerCase().includes(genre.toLowerCase()))
 
     
     res.json(playStoreCopy)
 })
 
-app.listen(8080, () => console.log('listening on 8080'))
+app.listen(8000, () => console.log('listening on 8000'))
